@@ -3,70 +3,154 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Documentación de la Aplicación de Control de Entorno IHC</title>
+    <title>Instrucciones de Uso: Control de Navegador por Voz</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         body {
-            background-color: #f9e8e8; /* Color de fondo */
-            margin: 30px; /* Margen exterior */
+            background-color: #f8f9fa; /* Fondo más claro */
+            margin: 30px;
         }
-        
-        .card {
-            background-color: #fff; /* Color de fondo de las tarjetas */
+
+        footer {
+            background-color: #343a40;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            margin-top: 30px;
+        }
+
+        #voiceResult {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+
+        .btn-group {
+            margin-top: 20px;
+        }
+
+        .btn {
+            margin-right: 10px;
+        }
+
+        #escudo {
+            position: fixed;
+            top: 50px;
+            right: 50px;
+            width: 150px; /* Tamaño de la imagen */
+            height: auto;
         }
     </style>
 </head>
 <body>
     <div class="container mt-5">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <h1 class="text-center mb-4">Documentación de la Aplicación de Control de Entorno IHC</h1>
-                
-                <h2>Funcionalidades</h2>
-
-                <div class="card">
-                    <div class="card-body">
-                        <h3 class="card-title">Abrir Página</h3>
-                        <p class="card-text">Comando: "Abrir Página"</p>
-                        <p class="card-text">Descripción: Abre una nueva ventana del navegador con la página predeterminada.</p>
-                    </div>
-                </div>
-
-                <div class="card mt-4">
-                    <div class="card-body">
-                        <h3 class="card-title">Ir a Página</h3>
-                        <p class="card-text">Comando: "Ir a Página"</p>
-                        <p class="card-text">Descripción: Navega a una página específica en una nueva ventana del navegador.</p>
-                    </div>
-                </div>
-
-                <div class="card mt-4">
-                    <div class="card-body">
-                        <h3 class="card-title">Cerrar Página</h3>
-                        <p class="card-text">Comando: "Cerrar Página"</p>
-                        <p class="card-text">Descripción: Cierra la ventana del navegador actualmente abierta.</p>
-                    </div>
-                </div>
-
-                <div class="card mt-4">
-                    <div class="card-body">
-                        <h3 class="card-title">Cerrar Navegador</h3>
-                        <p class="card-text">Comando: "Cerrar Navegador"</p>
-                        <p class="card-text">Descripción: Cierra todas las ventanas del navegador y finaliza la aplicación.</p>
-                    </div>
-                </div>
-
-                <h2 class="mt-5">Instrucciones de Uso</h2>
-                <p>1. Haga clic en el botón "Iniciar Reconocimiento de Voz" para activar el reconocimiento de voz.</p>
-                <p>2. Diga uno de los comandos especificados para realizar la acción correspondiente.</p>
-                <p>3. La aplicación proporcionará retroalimentación visual y de voz para confirmar la acción realizada.</p>
-
-                <a href="index.html" class="btn btn-primary mt-4">Regresar a Inicio</a>
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="text-center mb-4">Instrucciones de Uso: Control de Navegador por Voz</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <h4 class="mb-4">Para utilizar el control de navegador por voz, sigue estas instrucciones:</h4>
+                <ol>
+                    <li>Abre la página en un navegador web compatible.</li>
+                    <li>Asegúrate de tener un micrófono conectado y habilitado en tu dispositivo.</li>
+                    <li>Espera unos segundos a que la aplicación cargue completamente.</li>
+                    <li>Dile al navegador qué acción deseas realizar utilizando los comandos especificados, como "Abrir Página" o "Ir a Página".</li>
+                    <li>La aplicación proporcionará retroalimentación visual para confirmar la acción realizada.</li>
+                </ol>
+            </div>
+            <div class="col-md-4">
+                <h4 class="mb-4">Comandos disponibles:</h4>
+                <ul>
+                    <li>"Abrir Página" - Abre una nueva ventana del navegador.</li>
+                    <li>"Ir a Página" - Navega a una página específica.</li>
+                    <li>"Abrir Imagen" - Abre una imagen en una nueva pestaña del navegador.</li>
+                    <li>"Cambiar Tamaño" - Cambia el tamaño de los elementos de la página.</li>
+                    <li>"Instrucciones" - Muestra las instrucciones de uso nuevamente.</li>
+                    <li>"Regresar" - Regresa a la página principal.</li>
+                </ul>
+                <div id="voiceResult"></div>
+            </div>
+            <div class="col-md-4">
+                <h4 class="mb-4">Cómo decir correctamente los comandos:</h4>
+                <p>Para que el reconocimiento de voz funcione correctamente, asegúrate de pronunciar claramente los siguientes comandos en español:</p>
+                <ul>
+                    <li>"Abrir Página" - Di "Abrir Página".</li>
+                    <li>"Ir a Página" - Di "Ir a Página".</li>
+                    <li>"Abrir Imagen" - Di "Abrir Imagen".</li>
+                    <li>"Cambiar Tamaño" - Di "Cambiar Tamaño".</li>
+                    <li>"Instrucciones" - Di "Instrucciones".</li>
+                    <li>"Regresar" - Di "Regresar".</li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 text-center mt-4">
+                <a href="pruebamockapi.html" class="btn btn-info">DI REGRESAR</a>
             </div>
         </div>
     </div>
-    <footer class="bg-dark text-white text-center p-3 mt-5">
+
+    <footer class="text-center mt-5">
         <p>Derechos Reservados &copy; Ana Esbeidy Cervantes Acosta</p>
     </footer>
+
+    <script src="mockapi.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const voiceResult = document.getElementById('voiceResult');
+
+            function ejecutarComando(comando) {
+                comando = comando.toLowerCase().trim();
+                switch (comando) {
+                    case 'regresar':
+                        window.location.href = 'pruebamockapi.html';
+                        break;
+                    default:
+                        mostrarError();
+                        break;
+                }
+
+                // Envía el comando al MockAPI
+                enviarComandoAMockAPI(comando);
+            }
+
+
+            function enviarComandoAMockAPI(comando) {
+                const url = "https://660219919d7276a75552a2c5.mockapi.io/registro";
+                const data = { comando: comando };
+
+                fetch(url, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                })
+                .then(response => response.json())
+                .then(data => console.log('Comando enviado al MockAPI:', data))
+                .catch(error => console.error('Error al enviar comando al MockAPI:', error));
+            }
+
+            if ('webkitSpeechRecognition' in window) {
+                const recognition = new webkitSpeechRecognition();
+                recognition.lang = 'es-ES';
+
+                recognition.onresult = function (event) {
+                    const transcript = event.results[0][0].transcript;
+                    voiceResult.textContent = 'Tu dijiste: ' + transcript;
+                    ejecutarComando(transcript);
+                };
+
+                recognition.onerror = function (event) {
+                    console.error('Error en el reconocimiento de voz: ' + event.error);
+                };
+
+                recognition.start(); // Iniciar el reconocimiento de voz
+            } else {
+                alert('El reconocimiento de voz no es compatible con tu navegador.');
+            }
+        });
+    </script>
 </body>
 </html>
