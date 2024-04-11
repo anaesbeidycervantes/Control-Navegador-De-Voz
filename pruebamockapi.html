@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         body {
-            background-color: #f8f9fa; /* Fondo más claro */
+            background-color: #ecf4fd; /* Fondo más claro */
             margin: 30px;
         }
 
@@ -18,6 +18,28 @@
             padding: 10px 0;
             margin-top: 30px;
         }
+
+        #voiceResult {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+
+        .btn-group {
+            margin-top: 20px;
+        }
+
+        .btn {
+            margin-right: 10px;
+        }
+
+        /* Estilos para la imagen en la esquina superior derecha */
+        #escudo {
+            position: fixed;
+            top: 50px;
+            right: 50px;
+            width: 150px; /* Tamaño de la imagen */
+            height: auto;
+        }
     </style>
 </head>
 <body>
@@ -25,28 +47,32 @@
         <div class="row justify-content-center">
             <div class="col-md-6">
                 <h1 class="text-center mb-4">Control de Navegador por Voz</h1>
-                <div class="list-group">
-                    <a href="#" class="list-group-item list-group-item-action" id="openPage">Abrir Página</a>
-                    <a href="#" class="list-group-item list-group-item-action" id="closePage">Cerrar Página</a>
-                    <a href="#" class="list-group-item list-group-item-action" id="goToPage">Ir a Página</a>
-                    <a href="#" class="list-group-item list-group-item-action" id="closeBrowser">Cerrar Navegador</a>
+                <div class="btn-group" role="group">
+                    <button class="btn btn-primary" id="openPage">Abrir Página</button>
+                    <button class="btn btn-primary" id="goToPage">Ir a Página</button>
+                    <button class="btn btn-primary" id="openImage">Abrir Imagen</button>
+                    <button class="btn btn-primary" id="changeSize">Cambiar Tamaño</button>
+                    <button class="btn btn-primary" id="sayInstructions">Instrucciones</button>
                 </div>
-                <button id="startButton" class="btn btn-primary mt-3">Iniciar Reconocimiento de Voz</button>
-                <div id="voiceResult" class="mt-4"></div>
-
-                <!-- Instrucciones de Uso -->
-                <h2 class="mt-5">Instrucciones de Uso</h2>
-                <ol>
-                    <li>Haga clic en el botón "Iniciar Reconocimiento de Voz" para activar el reconocimiento de voz.</li>
-                    <li>Diga uno de los comandos especificados para realizar la acción correspondiente.</li>
-                    <li>La aplicación proporcionará retroalimentación visual y de voz para confirmar la acción realizada.</li>
-                </ol>
-
-                <!-- Enlace a las instrucciones -->
-                <a href="documentacion.html" class="btn btn-info">Ver Instrucciones</a>
+                <div id="voiceResult"></div>
+            </div>
+            <div class="col-md-6">
+                <h4 class="mb-6">Cómo decir correctamente los comandos:</h4>
+                <p>Para que el reconocimiento de voz funcione correctamente, asegúrate de pronunciar claramente los siguientes comandos en español:</p>
+                
+                <ul>
+                    <li>- Di "Ver Instrucciones".</li>
+                    <li>- Di "Abrir Página".</li>
+                    <li>- Di "Ir a Página".</li>
+                    <li>- Di "Abrir Imagen".</li>
+                    <li>- Di "Cambiar Tamaño".</li>
+                </ul>
             </div>
         </div>
     </div>
+
+    <!-- Agregando la imagen -->
+    <img id="escudo" src="escudo.jfif" alt="Escudo">
 
     <footer class="text-center mt-5">
         <p>Derechos Reservados &copy; Ana Esbeidy Cervantes Acosta</p>
