@@ -4,74 +4,57 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function ejecutarComando(comando) {
         comando = comando.toLowerCase().trim();
-        let indicacion = comando; // Usar el comando como indicacion
-        let direccion = ''; // Inicializar la dirección vacía
-
         switch (comando) {
             case 'abrir página':
-                direccion = 'https://www.netflix.com'; // Cambiar la dirección según necesites
-                abrirPagina(direccion);
-                break;
-            case 'cerrar página':
-                cerrarPagina();
+                openedWindow = window.open('https://www.google.com');
                 break;
             case 'ir a página':
-                direccion = 'https://www.google.com'; // Cambiar la dirección según necesites
-                abrirPagina(direccion);
+                openedWindow = window.open('https://www.netflix.com');
                 break;
-            case 'cerrar navegador':
-                cerrarNavegador();
+            case 'abrir imagen':
+                openedWindow = window.open('https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Instituto_Tecnol%C3%B3gico_de_Pachuca._004.jpg/640px-Instituto_Tecnol%C3%B3gico_de_Pachuca._004.jpg');
                 break;
+            case 'cambiar tamaño':
+                cambiarTamaño();
+                break;
+            case 'ver instrucciones':
+                window.location.href = 'documentacion.html';
+                break;
+            
             default:
                 mostrarError();
-                return;
+                break;
         }
-
-        enviarRegistro(indicacion, direccion); // Pasar indicacion y direccion a enviarRegistro
+        
+        // Envía el comando al MockAPI
+        enviarComandoAMockAPI(comando);
     }
 
-    function abrirPagina(url) {
-        openedWindow = window.open(url);
+    function cambiarTamaño() {
+        const titulo = document.querySelector('h1');
+        titulo.style.fontSize = '24px'; // Tamaño h4
+        titulo.style.color = 'blue'; // Color azul
+        titulo.style.fontWeight = 'bold'; // Negritas
     }
 
-    function cerrarPagina() {
-        if (openedWindow && !openedWindow.closed) {
-            openedWindow.close();
-        } else {
-            console.log('No hay ninguna página abierta para cerrar.');
-        }
+    function mostrarError(mensaje = 'Comando no identificado. Vuelve a intentarlo.') {
+        voiceResult.textContent = mensaje;
     }
 
-    function cerrarNavegador() {
-        window.close();
-    }
+    function enviarComandoAMockAPI(comando) {
+        const url = "https://660219919d7276a75552a2c5.mockapi.io/registro";
+        const data = { comando: comando };
 
-    function enviarRegistro(indicacion, direccion) {
-        const data = {
-            indicacion: indicacion, // Usar el comando como indicacion
-            direccion: direccion, // Agregar la dirección
-            timestamp: new Date().toISOString()
-        };
-        fetch('https://660219919d7276a75552a2c5.mockapi.io/registro', {
+        fetch(url, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(data)
         })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Error al enviar el registro a MockAPI');
-            }
-            console.log('Registro enviado exitosamente a MockAPI:', data);
-        })
-        .catch(error => {
-            console.error('Error al enviar el registro a MockAPI:', error);
-        });
-    }
-
-    function mostrarError() {
-        voiceResult.textContent = 'Comando no identificado. Vuelve a intentarlo.';
+        .then(response => response.json())
+        .then(data => console.log('Comando enviado al MockAPI:', data))
+        .catch(error => console.error('Error al enviar comando al MockAPI:', error));
     }
 
     if ('webkitSpeechRecognition' in window) {
@@ -88,9 +71,7 @@ document.addEventListener('DOMContentLoaded', function () {
             console.error('Error en el reconocimiento de voz: ' + event.error);
         };
 
-        document.getElementById('startButton').addEventListener('click', function () {
-            recognition.start();
-        });
+        recognition.start(); // Iniciar el reconocimiento de voz
     } else {
         alert('El reconocimiento de voz no es compatible con tu navegador.');
     }
